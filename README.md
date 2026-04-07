@@ -21,29 +21,18 @@ A polished, responsive, and highly interactive React/Next.js calendar component 
 1. Clone the repository:
    ```bash
    git clone [https://github.com/Manan-Joshi750/tufa-frontend-challenge.git](https://github.com/Manan-Joshi750/tufa-frontend-challenge.git)
-
 2. Navigate to the directory:
 
 Bash
 cd tufa-frontend-challenge
-
 3. Install dependencies:
 
 Bash
 npm install
-
 4. Start the development server:
 
 Bash
 npm run dev
-
 5. Open http://localhost:3000 in your browser.
 
-
-### Step 2: Save and Push
-Once you have pasted that and saved the file (`Ctrl + S`), open your VS Code terminal and run these exact three commands one by one:
-
 ```bash
-git add README.md
-git commit -m "docs: add comprehensive README with correct formatting"
-git push
