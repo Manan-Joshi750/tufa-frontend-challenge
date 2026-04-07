@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { addMonths, subMonths, format } from 'date-fns';
+import toast, { Toaster } from 'react-hot-toast'; // --- IMPORTED TOAST HERE ---
 import CalendarHeader from './CalendarHeader';
 import CalendarGrid from './CalendarGrid';
 import NotesSection from './NotesSection';
@@ -65,7 +66,22 @@ export default function CalendarWidget() {
   if (!isMounted) return null; 
 
   return (
-    <div className="w-full max-w-4xl bg-white shadow-2xl rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:shadow-blue-500/20">
+    <div className="w-full max-w-4xl bg-white shadow-2xl rounded-xl overflow-hidden flex flex-col transition-all duration-500 hover:shadow-blue-500/20 relative">
+      
+      {/* --- TOASTER COMPONENT ADDED HERE --- */}
+      <Toaster 
+        position="bottom-center" 
+        toastOptions={{
+          style: {
+            background: '#333',
+            color: '#fff',
+            borderRadius: '10px',
+            fontSize: '14px',
+            fontWeight: '500'
+          },
+        }}
+      />
+
       <CalendarHeader 
         currentMonth={currentMonth} 
         nextMonth={nextMonth} 
@@ -73,7 +89,18 @@ export default function CalendarWidget() {
       />
       
       <div className="flex flex-col md:flex-row p-6 gap-8">
-        <div className="w-full md:w-1/3 flex flex-col">
+        <div 
+          className="w-full md:w-1/3 flex flex-col"
+          // --- TOAST TRIGGER ADDED HERE (Fires when user clicks away from the text area) ---
+          onBlurCapture={(e) => {
+    // Casting to 'unknown' first is the standard fix for non-overlapping types in TS
+    const target = e.target as unknown as HTMLTextAreaElement; 
+    
+    if (target.tagName?.toLowerCase() === 'textarea' && target.value?.trim() !== '') {
+      toast.success('Note saved securely!', { id: 'save-toast' });
+    }
+  }}
+        >
            {/* Show the user what they are currently writing notes for */}
            <div className="text-xs font-bold text-[#1da1f2] mb-2 uppercase tracking-wider">
              Notes for: {startDate ? format(startDate, 'MMM do, yyyy') : format(currentMonth, 'MMMM yyyy')}

@@ -88,11 +88,24 @@ export default function CalendarGrid({ currentMonth, startDate, endDate, setStar
               <button
                 onClick={() => onDateClick(day)}
                 disabled={!isCurrentMonth}
+                
+                // --- A11Y & KEYBOARD SUPPORT ADDED HERE ---
+                tabIndex={isCurrentMonth ? 0 : -1}
+                aria-label={isCurrentMonth ? `Select ${format(day, 'MMMM do, yyyy')}` : undefined}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    onDateClick(day);
+                  }
+                }}
+                
+                // --- ANIMATIONS & FOCUS OUTLINES ADDED TO CLASSNAME ---
                 className={`w-10 h-10 flex items-center justify-center transition-all duration-200 
                   ${isSelectedStart || isSelectedEnd ? bgClass : ''} 
                   ${textClass} 
                   ${roundedClass}
-                  ${isCurrentMonth && !isSelectedStart && !isSelectedEnd && !isBetween ? 'hover:bg-gray-100 hover:text-[#1da1f2] cursor-pointer' : ''}
+                  ${isCurrentMonth && !isSelectedStart && !isSelectedEnd && !isBetween ? 'hover:bg-gray-100 hover:text-[#1da1f2] hover:scale-110 cursor-pointer' : ''}
+                  focus:outline-none focus:ring-2 focus:ring-[#1da1f2] focus:ring-offset-1 focus:z-10 active:scale-95
                 `}
               >
                 {format(day, 'd')}
