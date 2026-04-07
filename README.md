@@ -20,7 +20,7 @@ A polished, responsive, and highly interactive React/Next.js calendar component 
 
 1. Clone the repository:
 ```bash
-git clone [https://github.com/Manan-Joshi750/tufa-frontend-challenge.git](https://github.com/Manan-Joshi750/tufa-frontend-challenge.git)
+git clone https://github.com/Manan-Joshi750/tufa-frontend-challenge.git
 ```
 2. Navigate to the directory:
 
