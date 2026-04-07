@@ -19,20 +19,22 @@ A polished, responsive, and highly interactive React/Next.js calendar component 
 ## 🚀 How to Run Locally
 
 1. Clone the repository:
-   ```bash
-   git clone [https://github.com/Manan-Joshi750/tufa-frontend-challenge.git](https://github.com/Manan-Joshi750/tufa-frontend-challenge.git)
+```bash
+git clone [https://github.com/Manan-Joshi750/tufa-frontend-challenge.git](https://github.com/Manan-Joshi750/tufa-frontend-challenge.git)
+```
 2. Navigate to the directory:
 
-Bash
+```bash
 cd tufa-frontend-challenge
+```
 3. Install dependencies:
 
-Bash
+```bash
 npm install
+```
 4. Start the development server:
 
-Bash
-npm run dev
-5. Open http://localhost:3000 in your browser.
-
 ```bash
+npm run dev
+```
+5. Open http://localhost:3000 in your browser.
